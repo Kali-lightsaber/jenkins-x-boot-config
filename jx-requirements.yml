@@ -18,7 +18,7 @@ environments:
     namespaceSubDomain: -jx.
     tls:
       email: ""
-      enabled: false
+      enabled: true
       production: false
   key: dev
   repository: environment-ci-k8s-dev
@@ -28,7 +28,7 @@ environments:
     namespaceSubDomain: ""
     tls:
       email: ""
-      enabled: false
+      enabled: true
       production: false
   key: staging
   repository: environment-ci-k8s-staging
@@ -38,7 +38,7 @@ environments:
     namespaceSubDomain: ""
     tls:
       email: ""
-      enabled: false
+      enabled: true
       production: false
   key: production
   repository: environment-ci-k8s-production
@@ -49,7 +49,7 @@ ingress:
   namespaceSubDomain: -jx.
   tls:
     email: ""
-    enabled: false
+    enabled: true
     production: false
 kaniko: true
 repository: nexus
