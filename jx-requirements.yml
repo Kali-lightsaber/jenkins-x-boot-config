@@ -1,25 +1,63 @@
+autoUpdate:
+  enabled: false
+  schedule: ""
+bootConfigURL: https://github.com/kali-lightsaber/jenkins-x-boot-config.git
 cluster:
-  clusterName: ""
-  environmentGitOwner: ""
-  environmentGitPublic: false
-  project: ""
-  provider: gke
-  zone: ""
-gitops: true
+  clusterName: ci-k8s
+  devEnvApprovers:
+  - shrum
+  environmentGitOwner: kali-lightsaber
+  gitKind: github
+  namespace: jx
+  provider: kubernetes
+  registry: http://registry.secret.su
 environments:
-- key: dev
-- key: staging
-- key: production
+- ingress:
+    domain: jx.okd.local
+    externalDNS: true
+    namespaceSubDomain: -jx.
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: dev
+  repository: environment-ci-k8s-dev
+- ingress:
+    domain: stage.okd.local
+    externalDNS: true
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: staging
+  repository: environment-ci-k8s-staging
+- ingress:
+    domain: prod.okd.local
+    externalDNS: true
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: production
+  repository: environment-ci-k8s-production
+gitops: true
 ingress:
-  domain: ""
-  externalDNS: false
+  domain: jx.okd.local
+  externalDNS: true
+  namespaceSubDomain: -jx.
   tls:
     email: ""
     enabled: false
     production: false
 kaniko: true
+repository: nexus
 secretStorage: local
 storage:
+  backup:
+    enabled: false
+    url: ""
   logs:
     enabled: false
     url: ""
@@ -29,7 +67,11 @@ storage:
   repository:
     enabled: false
     url: ""
+vault: {}
+velero:
+  schedule: ""
+  ttl: ""
 versionStream:
-  ref: "master"
-  url: https://github.com/jenkins-x/jenkins-x-versions.git
+  ref: master
+  url: https://github.com/kali-lightsaber/jenkins-x-versions.git
 webhook: lighthouse
