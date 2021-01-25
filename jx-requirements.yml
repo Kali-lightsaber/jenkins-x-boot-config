@@ -5,7 +5,7 @@ bootConfigURL: https://github.com/kali-lightsaber/jenkins-x-boot-config.git
 cluster:
   clusterName: ci-k8s
   devEnvApprovers:
-  - shrum
+  - kali-lightsaber
   environmentGitOwner: kali-lightsaber
   gitKind: github
   gitName: github
